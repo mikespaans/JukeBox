@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">JukeBox</h1>
+    <p>JukeBox home page</p>
+    @* <button onclick="@DataBaseAcces.GetGenres()">Test</button> *@
+    @* <ul> *@
+    @*     @foreach(var genre in ViewData["Genres"] as List<Genres>) *@
+    @*     { *@
+    @*         <li>@genre.Genre</li> *@
+    @*     } *@
+    @* </ul> *@
+    
+    @* <div class="dropdown"> *@
+    @*     <button class="dropbtn">Dropdown</button> *@
+    @*     <div class="dropdown-content"> *@
+    @*         @foreach(var genre in ViewData["Genres"] as List<Genres>) *@
+    @*         { *@
+    @*             <a href="#">@genre.Genre</a> *@
+    @*         } *@
+    @*     </div> *@
+    @* </div> *@
+    
+    <select name="number">
+        <option value="">Select a genre</option>
+        @foreach(var genre in ViewData["Genres"] as List<Genres>)
+        {
+            <option value="@genre.Genre">@genre.Genre</option>
+        }
+        
+    </select>
+</div>
