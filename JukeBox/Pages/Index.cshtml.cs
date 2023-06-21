@@ -8,30 +8,29 @@ public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
     
-    private string ConnectionString = "server=localhost;port=3306;database=JukeBoxData;user=root;password=;";
+    // private string ConnectionString = "server=localhost;port=3306;database=JukeBoxData;user=root;password=;";
 
     public IndexModel(ILogger<IndexModel> logger)
     {
         _logger = logger;
     }
 
-    public void OnGet()
+    public void OnGet([FromQuery] string genre)
     {
         Console.WriteLine("Fakka");
-   
-        // var optionsBuilder = new DbContextOptionsBuilder<DbdContextClass>();
-        // optionsBuilder.UseSqlServer(ConnectionString);
-        // var dbContextOptions = optionsBuilder.Options;
+        Console.WriteLine(genre);
+     
     
         using (var context = new DbdContextClass())
         {
             var genres = context.Genres.ToList();
-            // // Console.WriteLine(genres);
-            // foreach (var genre in genres)
-            // {
-            //     Console.WriteLine(genre.Genre);
-            // }
+            var songs = context.Songs.Where(s => s.Genre == genre).ToList();
+
+            
+          
             ViewData["Genres"] = genres;
+            ViewData["Songs"] = songs;
+            
         }
         
         

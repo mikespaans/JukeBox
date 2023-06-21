@@ -9,30 +9,29 @@
 <div class="text-center">
     <h1 class="display-4">JukeBox</h1>
     <p>JukeBox home page</p>
-    @* <button onclick="@DataBaseAcces.GetGenres()">Test</button> *@
-    @* <ul> *@
-    @*     @foreach(var genre in ViewData["Genres"] as List<Genres>) *@
-    @*     { *@
-    @*         <li>@genre.Genre</li> *@
-    @*     } *@
-    @* </ul> *@
-    
-    @* <div class="dropdown"> *@
-    @*     <button class="dropbtn">Dropdown</button> *@
-    @*     <div class="dropdown-content"> *@
-    @*         @foreach(var genre in ViewData["Genres"] as List<Genres>) *@
-    @*         { *@
-    @*             <a href="#">@genre.Genre</a> *@
-    @*         } *@
-    @*     </div> *@
-    @* </div> *@
-    
-    <select name="number">
-        <option value="">Select a genre</option>
-        @foreach(var genre in ViewData["Genres"] as List<Genres>)
-        {
-            <option value="@genre.Genre">@genre.Genre</option>
-        }
+    <form>
+        <select name="genre">
+            <option value="">Select a genre</option>
+            @foreach(var genre in ViewData["Genres"] as List<Genres>)
+            {
+                <option value="@genre.Name">@genre.Name</option>
+            }
         
-    </select>
+        </select>
+        <input type="submit" value="Search"/>
+
+    </form>
+    
+    <div class="songs">
+        @foreach(var songs in ViewData["Songs"] as List<Songs>)
+        {
+            <div class="song" onclick="location.href='/Privacy'">
+                <p1>
+                    @songs.Name
+                </p1>
+                
+
+            </div>
+        }
+    </div>
 </div>
